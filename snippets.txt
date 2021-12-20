@@ -1,0 +1,112 @@
+//============================TABS START==========================//
+//============================TABS START==========================//
+//============================HTML==========================//
+<div class="tabcontainer">
+        <div class="tabcontent">
+          <img src="" alt="">
+          <div class="tabcontent__descr">
+            
+          </div>
+        </div>
+        <div class="tabcontent">
+          <img src="" alt="">
+          <div class="tabcontent__descr">
+            
+          </div>
+        </div>
+        <div class="tabcontent">
+          <img src="" alt="">
+          <div class="tabcontent__descr">
+           
+          </div>
+        </div>
+        <div class="tabcontent">
+          <img src="" alt="">
+          <div class="tabcontent__descr">
+            
+          </div>
+        </div>
+        <div class="tabheader">
+          <h3></h3>
+          <div class="tabheader__items">
+            <div class="tabheader__item tabheader__item_active"></div>
+            <div class="tabheader__item"></div>
+            <div class="tabheader__item"></div>
+            <div class="tabheader__item">/div>
+          </div>
+        </div>
+      </div>
+
+      //============================CSS/SCSS==========================//
+      
+.show {
+  display: block;
+}
+
+.hide {
+  display: none;
+}
+
+.fade {
+  animation-name: fade;
+  animation-duration: 1.5s;
+}
+
+@keyframes fade {
+  from {
+    opacity: 0.1;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+//============================javascript==========================//
+ //  щбращаемся к проекту
+ window.addEventListener('DOMContentLoaded', () => {
+
+   //  назначем переменные
+   const tabs = document.querySelectorAll('.tabheader__item'),
+     tabsContent = document.querySelectorAll('.tabcontent'),
+     tabParents = document.querySelector('.tabheader__items');
+
+   //  функция которая скрывает контент
+   function hideTabContent() {
+     tabsContent.forEach(item => {
+       item.classList.add('hide');
+       item.classList.remove('show', 'fade');
+     });
+     tabs.forEach(item => {
+       item.classList.remove('tabheader__item_active');
+     });
+   }
+   //  функция которая добавляет показывает выбраный таб
+   function showTabContent(i = 0) {
+     tabsContent[i].classList.add('show', 'fade');
+     tabsContent[i].classList.remove('hide');
+     tabs[i].classList.add('tabheader__item_active'); //  добавляет актив
+   }
+   //  вызов функций
+   hideTabContent();
+   showTabContent();
+   //  наше событие клик
+   tabParents.addEventListener('click', (event) => {
+     //  что бы не писать каждый раз event.target мы даем ему переменную target
+     const target = event.target;
+
+     // перебор. когда мы нажимаем на tabheader__item происходит  перебор и если таргет равно итем то мы видем содержимое
+     if (target && target.classList.contains('tabheader__item')) {
+       tabs.forEach((item, i) => {
+         if (target == item) {
+           hideTabContent();
+           showTabContent(i);
+         }
+       });
+     }
+   });
+
+ });
+
+//============================TABS END==========================//
+//============================TABS END==========================//
