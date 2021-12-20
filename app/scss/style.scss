@@ -52,6 +52,30 @@
   &__content {}
 }
 
+.burger {
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+  margin-top: 20px;
+  display: none;
+
+  &__line-1 {
+    height: 3px;
+    background-color: #000;
+  }
+
+  &__line-2 {
+    height: 3px;
+    background-color: #000;
+    margin: 10px 0;
+  }
+
+  &__line-3 {
+    height: 3px;
+    background-color: #000;
+  }
+}
+
 .main {
   &__btn {
     max-width: 300px;
@@ -63,11 +87,7 @@
 }
 
 .start {
-  background-image: url(../images/header-bg.jpg);
-  background-size: contain;
-  background-repeat: no-repeat;
-  object-fit: cover;
-  background-position: center;
+
 
   &__inner {
     height: 810px;
@@ -77,6 +97,13 @@
     text-align: center;
     justify-content: center;
     margin-bottom: 68px;
+    object-fit: cover;
+
+    background-image: url(../images/header-bg.jpg);
+    background-repeat: no-repeat;
+    object-fit: cover;
+
+
   }
 
   &__inner-title {
@@ -263,3 +290,5 @@
 
   &__list-link {}
 }
+
+@import 'media';
